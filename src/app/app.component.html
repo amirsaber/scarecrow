@@ -1,6 +1,6 @@
 <md-toolbar color="primary">
   <div fxLayout="row" class="toolbar-container">
-    <div fxFlex>{{title}}</div>
+    <div fxFlex>Scarecrow</div>
     <div fxFlex="40px">
       <button md-icon-button [mdMenuTriggerFor]="appMenu">
    <md-icon>person</md-icon>
@@ -9,13 +9,16 @@
   </div>
 </md-toolbar>
 <md-menu #appMenu="mdMenu">
-  <button md-menu-item> Sign In </button>
-  <button md-menu-item> About </button>
+  <button *ngIf="!(user?.uid)" md-menu-item (click)="openLogin()"> Log In </button>
+  <button *ngIf="user?.uid" md-menu-item (click)="logOut()"> Log Out </button>
 </md-menu>
 <div class="main-container" fxLayout="column" fxLayoutAlign="center center">
   <div fxFlex>
-    <h1>
+    <h1 *ngIf="!(user?.uid)">
       Coming Soon!!!
+    </h1>
+    <h1 *ngIf="user?.uid">
+      Welcome Back
     </h1>
   </div>
   <div fxFlex>

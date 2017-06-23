@@ -5,7 +5,11 @@ import {
   MdToolbarModule,
   MdIconModule,
   MdMenuModule,
-  MdButtonModule
+  MdButtonModule,
+  MdDialogModule,
+  MdInputModule,
+  MdCheckboxModule,
+  MdSnackBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -14,11 +18,15 @@ import {
   declarations: [
   ],
   exports: [
+    BrowserAnimationsModule,
     MdToolbarModule,
     MdIconModule,
     MdMenuModule,
     MdButtonModule,
-    BrowserAnimationsModule
+    MdDialogModule,
+    MdInputModule,
+    MdCheckboxModule,
+    MdSnackBarModule
   ]
 })
 export class CustomMaterialModule { }

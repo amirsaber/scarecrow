@@ -1,0 +1,31 @@
+<div md-dialog-title>
+  Login
+</div>
+<md-dialog-content>
+  <form [formGroup]="loginForm" novalidate>
+    <div fxLayout="row" fxLayoutWrap>
+      <div fxFlex="100%">
+        <md-input-container>
+          <input type="email" mdInput placeholder="Email" formControlName="email">
+          <md-error *ngFor="let error of formErrors['email']">{{error}}</md-error>
+        </md-input-container>
+      </div>
+      <div fxFlex="100%"><br/></div>
+      <div fxFlex="100%">
+        <md-input-container>
+          <input type="password" mdInput placeholder="Password" formControlName="password">
+          <md-error *ngFor="let error of formErrors['password']">{{error}}</md-error>
+        </md-input-container>
+      </div>
+      <div fxFlex="100%"><br/></div>
+      <div fxFlex="100%">
+        <md-checkbox color="primary" (change)="firstTimeChange($event)">First time?</md-checkbox>
+      </div>
+      <div fxFlex="100%"><br/></div>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button md-dialog-close>Close</button>
+  <button md-raised-button [disabled]='loginForm.invalid' (click)="login()" color="primary">Login</button>
+</md-dialog-actions>
