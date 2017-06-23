@@ -1,7 +1,24 @@
-<!--The whole content below can be removed with the new code.-->
-<div style="text-align:center">
-  <h1>
-    {{title}} is Coming Soon!!!
-  </h1>
-  <img width="300" src="/assets/scarecrow.svg" />
+<md-toolbar color="primary">
+  <div fxLayout="row" class="toolbar-container">
+    <div fxFlex>{{title}}</div>
+    <div fxFlex="40px">
+      <button md-icon-button [mdMenuTriggerFor]="appMenu">
+   <md-icon>person</md-icon>
+</button>
+    </div>
+  </div>
+</md-toolbar>
+<md-menu #appMenu="mdMenu">
+  <button md-menu-item> Sign In </button>
+  <button md-menu-item> About </button>
+</md-menu>
+<div class="main-container" fxLayout="column" fxLayoutAlign="center center">
+  <div fxFlex>
+    <h1>
+      Coming Soon!!!
+    </h1>
+  </div>
+  <div fxFlex>
+    <img class="logo" src="/assets/scarecrow.svg" />
+  </div>
 </div>
