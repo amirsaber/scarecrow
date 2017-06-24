@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { MdDialogRef, MdCheckboxChange, MdSnackBar } from '@angular/material';
-import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
 
@@ -73,7 +73,7 @@ export class NewOrderDialogComponent implements OnInit {
   public async createOrder() {
     const data = this.orderForm.value;
     try {
-      const list = this.db.list(`/orders/${data.type}`)
+      const list = this.db.list(`/Orders/${data.type}`)
       await list.push({
         uid: this.user.uid,
         amount: data.amount

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { MdDialog } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
@@ -16,7 +17,8 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     public dialog: MdDialog,
-    public afAuth: AngularFireAuth
+    public afAuth: AngularFireAuth,
+    public router: Router
   ) { }
 
   public ngOnInit() {
@@ -31,5 +33,6 @@ export class HeaderComponent implements OnInit {
 
   logOut() {
     this.afAuth.auth.signOut();
+    this.router.navigate(['/']);
   }
 }

@@ -1,0 +1,20 @@
+<div class="container">
+    <div fxLayout="row" fxLayoutWrap>
+        <div fxFlex="25%" *ngFor="let buy of buyList | async">
+            <md-card>
+                <md-card-header>Buy</md-card-header>
+                <md-card-content>Amount: {{buy.amount}}</md-card-content>
+            </md-card>
+        </div>
+    </div>
+    <br/>
+    <br/>
+    <div fxLayout="row" fxLayoutWrap>
+        <div fxFlex="25%" *ngFor="let sell of sellList | async">
+            <md-card>
+                <md-card-header>Sell</md-card-header>
+                <md-card-content>Amount: {{sell.amount}}</md-card-content>
+            </md-card>
+        </div>
+    </div>
+</div>

@@ -5,6 +5,11 @@
         Scarecrow
       </button>
     </div>
+    <div fxFlex="100px">
+      <button md-button routerLink="/orders">
+        Orders
+      </button>
+    </div>
     <div fxFlex="100px" *ngIf="user?.uid">
       <button md-button routerLink="/userorders">
         My Orders
@@ -13,8 +18,8 @@
     <div fxFlex></div>
     <div fxFlex="40px">
       <button md-icon-button [mdMenuTriggerFor]="appMenu">
-   <md-icon>person</md-icon>
-</button>
+        <md-icon>person</md-icon>
+      </button>
     </div>
   </div>
 </md-toolbar>
