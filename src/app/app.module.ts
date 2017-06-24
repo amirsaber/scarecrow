@@ -3,34 +3,49 @@ import { environment } from '../environments/environment';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
-import { CustomMaterialModule } from './modules/material/custom-material.module';
+import { AppMaterialModule } from './modules/material/app-material.module';
+import { AppRoutingModule } from './modules/routing/app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
+import { HomePageComponent } from './components/homepage/homepage.component';
+import { HeaderComponent } from './components/header/header.component';
+import { UserOrdersComponent } from './components/user-orders/user-orders.component';
+import { NewOrderCardComponent } from './components/new-order-card/new-order-card.component';
+import { NewOrderDialogComponent } from './components/new-order-dialog/new-order-dialog.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginDialogComponent
+    LoginDialogComponent,
+    HomePageComponent,
+    HeaderComponent,
+    UserOrdersComponent,
+    NewOrderCardComponent,
+    NewOrderDialogComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     ReactiveFormsModule,
     FlexLayoutModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    CustomMaterialModule
+    AppMaterialModule,
+    AppRoutingModule
   ],
   entryComponents: [
-    LoginDialogComponent
+    LoginDialogComponent,
+    NewOrderDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

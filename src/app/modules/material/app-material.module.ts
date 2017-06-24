@@ -9,7 +9,9 @@ import {
   MdDialogModule,
   MdInputModule,
   MdCheckboxModule,
-  MdSnackBarModule
+  MdSnackBarModule,
+  MdCardModule,
+  MdSelectModule
 } from '@angular/material';
 
 @NgModule({
@@ -26,7 +28,9 @@ import {
     MdDialogModule,
     MdInputModule,
     MdCheckboxModule,
-    MdSnackBarModule
+    MdSnackBarModule,
+    MdCardModule,
+    MdSelectModule
   ]
 })
-export class CustomMaterialModule { }
+export class AppMaterialModule { }

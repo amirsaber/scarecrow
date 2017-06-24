@@ -1,0 +1,24 @@
+<md-toolbar color="primary">
+  <div fxLayout="row" class="toolbar-container">
+    <div fxFlex="100px">
+      <button md-button routerLink="/">
+        Scarecrow
+      </button>
+    </div>
+    <div fxFlex="100px" *ngIf="user?.uid">
+      <button md-button routerLink="/userorders">
+        My Orders
+      </button>
+    </div>
+    <div fxFlex></div>
+    <div fxFlex="40px">
+      <button md-icon-button [mdMenuTriggerFor]="appMenu">
+   <md-icon>person</md-icon>
+</button>
+    </div>
+  </div>
+</md-toolbar>
+<md-menu #appMenu="mdMenu">
+  <button *ngIf="!(user?.uid)" md-menu-item (click)="openLogin()"> Log In </button>
+  <button *ngIf="user?.uid" md-menu-item (click)="logOut()"> Log Out </button>
+</md-menu>

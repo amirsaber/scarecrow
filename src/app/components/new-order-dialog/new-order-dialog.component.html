@@ -1,0 +1,28 @@
+<div md-dialog-title>
+  Add Order
+</div>
+<md-dialog-content>
+  <form [formGroup]="orderForm" novalidate>
+    <div fxLayout="row" fxLayoutWrap>
+      <div fxFlex="100%">
+        <md-select placeholder="Type" formControlName="type">
+          <md-option *ngFor="let type of types" [value]="type">
+            {{type}}
+          </md-option>
+        </md-select>
+      </div>
+      <div fxFlex="100%"><br/></div>
+      <div fxFlex="100%">
+        <md-input-container>
+          <input type="text" mdInput placeholder="Amount" formControlName="amount">
+          <md-error *ngFor="let error of formErrors['amount']">{{error}}</md-error>
+        </md-input-container>
+      </div>
+      <div fxFlex="100%"><br/></div>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button md-dialog-close>Close</button>
+  <button md-raised-button [disabled]='orderForm.invalid' color="primary" (click)="createOrder()">Add</button>
+</md-dialog-actions>

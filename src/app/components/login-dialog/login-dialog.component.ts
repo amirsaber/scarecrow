@@ -24,7 +24,6 @@ export class LoginDialogComponent implements OnInit {
       'required': 'Passwor is required.'
     }
   };
-  private firstTime = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -36,7 +35,8 @@ export class LoginDialogComponent implements OnInit {
   public ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
+      firstTime: ['']
     });
 
     this.loginForm.valueChanges
@@ -66,12 +66,11 @@ export class LoginDialogComponent implements OnInit {
 
   public async login() {
     const data = this.loginForm.value;
-    let loginResult: any;
     try {
-      if (this.firstTime) {
-        loginResult = await this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password);
+      if (data.firstTime) {
+        await this.afAuth.auth.createUserWithEmailAndPassword(data.email, data.password);
       } else {
-        loginResult = await this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password);
+        await this.afAuth.auth.signInWithEmailAndPassword(data.email, data.password);
       }
       this.snackBar.open('Loged in successfully', 'Close', {
         duration: 2000,
@@ -82,9 +81,5 @@ export class LoginDialogComponent implements OnInit {
         duration: 2000,
       });
     }
-  }
-
-  firstTimeChange(change: MdCheckboxChange) {
-    this.firstTime = change.checked;
   }
 }
