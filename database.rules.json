@@ -1,6 +1,17 @@
 {
   "rules": {
-    ".read": "auth != null",
-    ".write": "auth != null"
+    "Orders": {
+      ".read": "true",
+      "Buy": {
+        "$orderId": {
+          ".write": "true"
+        }
+      },
+      "Sell": {
+        "$orderId": {
+          ".write": "true"
+        }
+      }
+    }
   }
 }
