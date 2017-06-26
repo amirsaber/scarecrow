@@ -1,5 +1,5 @@
 <md-toolbar color="primary">
-  <div fxLayout="row" class="toolbar-container">
+  <div fxLayout="row" class="toolbar-container" fxHide.xs>
     <div fxFlex="100px">
       <button md-button routerLink="/">
         Scarecrow
@@ -17,13 +17,24 @@
     </div>
     <div fxFlex></div>
     <div fxFlex="40px">
-      <button md-icon-button [mdMenuTriggerFor]="appMenu">
+      <button md-icon-button [mdMenuTriggerFor]="loginMenu">
         <md-icon>person</md-icon>
       </button>
     </div>
   </div>
+  <div fxLayout="row" class="toolbar-container" fxShow.xs fxHide.gt-xs>
+    <div fxFlex="40px">
+      <button md-icon-button [mdMenuTriggerFor]="loginMenu">
+        <md-icon>menu</md-icon>
+      </button>
+    </div>
+  </div>
 </md-toolbar>
-<md-menu #appMenu="mdMenu">
+<md-menu #loginMenu="mdMenu">
+  <button md-menu-item routerLink="/"> Scarecrow </button>
+  <button md-menu-item routerLink="/orders"> Orders </button>
+  <button *ngIf="user?.uid" md-menu-item routerLink="/userorders"> My Orders </button>
+
   <button *ngIf="!(user?.uid)" md-menu-item (click)="openLogin()"> Log In </button>
   <button *ngIf="user?.uid" md-menu-item (click)="logOut()"> Log Out </button>
 </md-menu>
