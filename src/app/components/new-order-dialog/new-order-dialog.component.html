@@ -13,6 +13,13 @@
       </div>
       <div fxFlex="100%"><br/></div>
       <div fxFlex="100%">
+        <md-select placeholder="Grain" formControlName="grain">
+          <md-option *ngFor="let grain of grains" [value]="grain">
+            {{grain}}
+          </md-option>
+        </md-select>
+      </div>
+      <div fxFlex="100%">
         <md-input-container>
           <input type="text" mdInput placeholder="Amount" formControlName="amount">
           <md-error *ngFor="let error of formErrors['amount']">{{error}}</md-error>

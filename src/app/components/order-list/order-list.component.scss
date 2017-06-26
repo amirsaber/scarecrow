@@ -1,3 +1,11 @@
 .container {
     padding: 15px;
+
+    .tab-container {
+      margin: 10px;
+
+      .card-container {
+        padding: 5px;
+      }
+    }
 }
