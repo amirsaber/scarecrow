@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import {
   MdToolbarModule,
@@ -9,10 +9,7 @@ import {
   MdDialogModule,
   MdInputModule,
   MdCheckboxModule,
-  MdSnackBarModule,
-  MdCardModule,
-  MdSelectModule,
-  MdTabsModule
+  MdSnackBarModule
 } from '@angular/material';
 
 @NgModule({
@@ -29,10 +26,7 @@ import {
     MdDialogModule,
     MdInputModule,
     MdCheckboxModule,
-    MdSnackBarModule,
-    MdCardModule,
-    MdSelectModule,
-    MdTabsModule
+    MdSnackBarModule
   ]
 })
 export class AppMaterialModule { }

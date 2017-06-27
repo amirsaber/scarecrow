@@ -4,6 +4,7 @@
 <md-dialog-content>
   <form [formGroup]="orderForm" novalidate>
     <div fxLayout="row" fxLayoutWrap>
+      <div fxFlex="100%"><br/></div>
       <div fxFlex="100%">
         <md-select placeholder="Type" formControlName="type">
           <md-option *ngFor="let type of types" [value]="type">

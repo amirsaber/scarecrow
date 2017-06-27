@@ -1,4 +1,3 @@
-import 'hammerjs';
 import { environment } from '../environments/environment';
 
 import { BrowserModule } from '@angular/platform-browser';
@@ -11,16 +10,13 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 
 import { AppMaterialModule } from './modules/material/app-material.module';
+import { OrderModule } from '../order/order.module';
 import { AppRoutingModule } from './modules/routing/app-routing.module';
 
 import { AppComponent } from './app.component';
 import { LoginDialogComponent } from './components/login-dialog/login-dialog.component';
 import { HomePageComponent } from './components/homepage/homepage.component';
 import { HeaderComponent } from './components/header/header.component';
-import { UserOrdersComponent } from './components/user-orders/user-orders.component';
-import { NewOrderCardComponent } from './components/new-order-card/new-order-card.component';
-import { NewOrderDialogComponent } from './components/new-order-dialog/new-order-dialog.component';
-import { OrderListComponent } from './components/order-list/order-list.component';
 import { DialogComponent } from './components/dialog/dialog.component';
 
 
@@ -30,10 +26,6 @@ import { DialogComponent } from './components/dialog/dialog.component';
     LoginDialogComponent,
     HomePageComponent,
     HeaderComponent,
-    UserOrdersComponent,
-    NewOrderCardComponent,
-    NewOrderDialogComponent,
-    OrderListComponent,
     DialogComponent
   ],
   imports: [
@@ -45,11 +37,11 @@ import { DialogComponent } from './components/dialog/dialog.component';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     AppMaterialModule,
-    AppRoutingModule
+    AppRoutingModule,
+    OrderModule
   ],
   entryComponents: [
-    LoginDialogComponent,
-    NewOrderDialogComponent
+    LoginDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
