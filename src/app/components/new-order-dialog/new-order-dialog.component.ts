@@ -4,7 +4,6 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MdDialogRef, MdCheckboxChange, MdSnackBar } from '@angular/material';
 import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'app-new-order-dialog',
@@ -12,7 +11,6 @@ import * as firebase from 'firebase/app';
   styleUrls: ['./new-order-dialog.component.scss']
 })
 export class NewOrderDialogComponent implements OnInit {
-  public user: firebase.User;
   public orderForm: FormGroup;
   public formErrors = {
     type: [],
@@ -49,10 +47,6 @@ export class NewOrderDialogComponent implements OnInit {
     });
 
     this.orderForm.valueChanges.subscribe(data => this.onValueChanged(data));
-
-    this.afAuth.authState.subscribe((user) => {
-      this.user = user;
-    });
   }
 
   private onValueChanged(data?: any) {
@@ -81,10 +75,10 @@ export class NewOrderDialogComponent implements OnInit {
     try {
       const list = this.db.list(`/Orders/${data.type}`)
       await list.push({
-        uid: this.user.uid,
+        uid: this.afAuth.auth.currentUser.uid,
         amount: data.amount,
         grain: data.grain,
-        email: this.user.email
+        email: this.afAuth.auth.currentUser.email
       });
       this.snackBar.open('Order Added', 'Close', {
         duration: 2000,

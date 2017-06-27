@@ -1,9 +1,9 @@
 <div class="main-container" fxLayout="column" fxLayoutAlign="center center">
   <div fxFlex>
-    <h1 *ngIf="!(user?.uid)">
+    <h1 *ngIf="!afAuth.auth.currentUser">
       Coming Soon!!!
     </h1>
-    <h1 *ngIf="user?.uid">
+    <h1 *ngIf="afAuth.auth.currentUser">
       Welcome Back
     </h1>
   </div>
