@@ -4,6 +4,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomePageComponent } from '../../components/homepage/homepage.component';
 import { DialogComponent } from '../../components/dialog/dialog.component';
 
+import { AuthGuardService } from './auth-gard.service';
+
 const appRoutes: Routes = [
   {
     path: '',
@@ -13,6 +15,7 @@ const appRoutes: Routes = [
     path: 'login',
     outlet: 'dialog',
     component: DialogComponent,
+    canActivate: [AuthGuardService]
   }
 ]
 
@@ -20,7 +23,9 @@ const appRoutes: Routes = [
   imports: [
     RouterModule.forRoot(appRoutes),
   ],
-  providers: [],
+  providers: [
+    AuthGuardService
+  ],
   exports: [
     RouterModule,
   ]
