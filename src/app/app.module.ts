@@ -21,6 +21,7 @@ import { UserOrdersComponent } from './components/user-orders/user-orders.compon
 import { NewOrderCardComponent } from './components/new-order-card/new-order-card.component';
 import { NewOrderDialogComponent } from './components/new-order-dialog/new-order-dialog.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { OrderListComponent } from './components/order-list/order-list.component
     UserOrdersComponent,
     NewOrderCardComponent,
     NewOrderDialogComponent,
-    OrderListComponent
+    OrderListComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,

@@ -22,7 +22,7 @@
       </button>
     </div>
   </div>
-  <div fxLayout="row" class="toolbar-container" fxShow.xs fxHide.gt-xs>
+  <div fxLayout="row" class="toolbar-container" fxHide.gt-xs>
     <div fxFlex="40px">
       <button md-icon-button [mdMenuTriggerFor]="loginMenu">
         <md-icon>menu</md-icon>
@@ -31,10 +31,10 @@
   </div>
 </md-toolbar>
 <md-menu #loginMenu="mdMenu">
-  <button md-menu-item routerLink="/"> Scarecrow </button>
-  <button md-menu-item routerLink="/orders"> Orders </button>
+  <button fxHide.gt-xs md-menu-item routerLink="/"> Scarecrow </button>
+  <button fxHide.gt-xs md-menu-item routerLink="/orders"> Orders </button>
   <button *ngIf="user?.uid" md-menu-item routerLink="/userorders"> My Orders </button>
 
-  <button *ngIf="!(user?.uid)" md-menu-item (click)="openLogin()"> Log In </button>
+  <button *ngIf="!(user?.uid)" md-menu-item [routerLink]="[{outlets: {dialog: 'login'}}]"> Log In </button>
   <button *ngIf="user?.uid" md-menu-item (click)="logOut()"> Log Out </button>
 </md-menu>

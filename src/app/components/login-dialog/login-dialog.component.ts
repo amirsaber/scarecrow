@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { MdDialogRef, MdCheckboxChange, MdSnackBar } from '@angular/material';
+import { MdDialogRef, MdSnackBar } from '@angular/material';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 @Component({
@@ -29,7 +30,8 @@ export class LoginDialogComponent implements OnInit {
     private formBuilder: FormBuilder,
     public afAuth: AngularFireAuth,
     public dialogRef: MdDialogRef<LoginDialogComponent>,
-    public snackBar: MdSnackBar
+    public snackBar: MdSnackBar,
+    public router: Router
   ) { }
 
   public ngOnInit() {
@@ -75,6 +77,11 @@ export class LoginDialogComponent implements OnInit {
       this.snackBar.open('Loged in successfully', 'Close', {
         duration: 2000,
       });
+      this.router.navigate([{
+        outlets: {
+          dialog: null
+        }
+      }]);
       this.dialogRef.close();
     } catch (err) {
       this.snackBar.open(err.message, 'Close', {
