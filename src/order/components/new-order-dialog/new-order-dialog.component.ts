@@ -78,11 +78,11 @@ export class NewOrderDialogComponent implements OnInit {
     }
   }
 
-  public async createOrder() {
+  public createOrder() {
     const data = this.orderForm.value;
     try {
       const list = this.db.list('/Orders')
-      await list.push({
+      list.push({
         uid: this.afAuth.auth.currentUser.uid,
         amount: data.amount,
         grain: data.grain,
@@ -100,11 +100,11 @@ export class NewOrderDialogComponent implements OnInit {
     }
   }
 
-  public async saveOrder() {
+  public saveOrder() {
     const data = this.orderForm.value;
     try {
       const order = this.db.object(`/Orders/${this.order.$key}`)
-      await order.update({
+      order.update({
         uid: this.afAuth.auth.currentUser.uid,
         amount: data.amount,
         grain: data.grain,
@@ -122,11 +122,11 @@ export class NewOrderDialogComponent implements OnInit {
     }
   }
 
-  public async deleteOrder() {
+  public deleteOrder() {
     const data = this.orderForm.value;
     try {
       const order = this.db.object(`/Orders/${this.order.$key}`)
-      await order.remove();
+      order.remove();
       this.snackBar.open('Order Deleted', 'Close', {
         duration: 2000,
       });
