@@ -16,12 +16,16 @@ export class OrderListComponent implements OnInit {
   ) { }
 
   public ngOnInit() {
-    this.buyList = this.db.list('/Orders/Buy', {
+    this.buyList = this.db.list('/Orders', {
       query: {
+        orderByChild: 'type',
+        equalTo: 'Buy'
       }
     });
-    this.sellList = this.db.list('/Orders/Sell', {
+    this.sellList = this.db.list('/Orders', {
       query: {
+        orderByChild: 'type',
+        equalTo: 'Sell'
       }
     });
   }

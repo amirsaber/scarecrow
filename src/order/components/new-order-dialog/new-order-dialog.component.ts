@@ -11,6 +11,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./new-order-dialog.component.scss']
 })
 export class NewOrderDialogComponent implements OnInit {
+  public order = {
+    type: 'Sell',
+    grain: 'Wheat',
+    amount: null,
+    $key: null,
+    email: null,
+    uid: null
+  };
   public orderForm: FormGroup;
   public formErrors = {
     type: [],
@@ -41,9 +49,9 @@ export class NewOrderDialogComponent implements OnInit {
 
   public ngOnInit() {
     this.orderForm = this.formBuilder.group({
-      type: ['Sell'],
-      amount: ['', Validators.required],
-      grain: ['Wheat', Validators.required]
+      type: [this.order.type],
+      amount: [this.order.amount, Validators.required],
+      grain: [this.order.grain, Validators.required]
     });
 
     this.orderForm.valueChanges.subscribe(data => this.onValueChanged(data));
@@ -73,14 +81,53 @@ export class NewOrderDialogComponent implements OnInit {
   public async createOrder() {
     const data = this.orderForm.value;
     try {
-      const list = this.db.list(`/Orders/${data.type}`)
+      const list = this.db.list('/Orders')
       await list.push({
         uid: this.afAuth.auth.currentUser.uid,
         amount: data.amount,
         grain: data.grain,
+        type: data.type,
         email: this.afAuth.auth.currentUser.email
       });
       this.snackBar.open('Order Added', 'Close', {
+        duration: 2000,
+      });
+      this.dialogRef.close();
+    } catch (err) {
+      this.snackBar.open(err.message, 'Close', {
+        duration: 2000,
+      });
+    }
+  }
+
+  public async saveOrder() {
+    const data = this.orderForm.value;
+    try {
+      const order = this.db.object(`/Orders/${this.order.$key}`)
+      await order.update({
+        uid: this.afAuth.auth.currentUser.uid,
+        amount: data.amount,
+        grain: data.grain,
+        type: data.type,
+        email: this.afAuth.auth.currentUser.email
+      });
+      this.snackBar.open('Order Edited', 'Close', {
+        duration: 2000,
+      });
+      this.dialogRef.close();
+    } catch (err) {
+      this.snackBar.open(err.message, 'Close', {
+        duration: 2000,
+      });
+    }
+  }
+
+  public async deleteOrder() {
+    const data = this.orderForm.value;
+    try {
+      const order = this.db.object(`/Orders/${this.order.$key}`)
+      await order.remove();
+      this.snackBar.open('Order Deleted', 'Close', {
         duration: 2000,
       });
       this.dialogRef.close();

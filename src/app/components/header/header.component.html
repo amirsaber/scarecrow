@@ -33,7 +33,7 @@
 <md-menu #loginMenu="mdMenu">
   <button fxHide.gt-xs md-menu-item routerLink="/"> Scarecrow </button>
   <button fxHide.gt-xs md-menu-item routerLink="/orders"> Orders </button>
-  <button *ngIf="afAuth.auth.currentUser" md-menu-item routerLink="/userorders"> My Orders </button>
+  <button fxHide.gt-xs *ngIf="afAuth.auth.currentUser" md-menu-item routerLink="/userorders"> My Orders </button>
 
   <button *ngIf="!afAuth.auth.currentUser" md-menu-item [routerLink]="[{outlets: {dialog: 'login'}}]"> Log In </button>
   <button *ngIf="afAuth.auth.currentUser" md-menu-item (click)="logOut()"> Log Out </button>

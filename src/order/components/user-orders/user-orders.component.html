@@ -1,1 +1,29 @@
-<app-new-order-card></app-new-order-card>
+<div class="container">
+  <div>
+    <app-new-order-card></app-new-order-card>
+  </div>
+  <div>
+    <md-tab-group>
+      <md-tab label="Sell">
+        <div class="tab-container">
+          <div fxLayout="row" fxLayoutWrap>
+            <div fxFlex.gt-sm="25%" fxFlex.sm="50%" fxFlex.xs="100%" *ngFor="let sell of sellList | async">
+              <app-order-card [order]="sell"></app-order-card>
+            </div>
+          </div>
+        </div>
+      </md-tab>
+      <md-tab label="Buy">
+        <div class="tab-container">
+          <div fxLayout="row" fxLayoutWrap>
+            <div fxFlex.gt-sm="25%" fxFlex.sm="50%" fxFlex.xs="100%" *ngFor="let buy of buyList | async">
+              <div class="card-container">
+                <app-order-card [order]="buy"></app-order-card>
+              </div>
+            </div>
+          </div>
+        </div>
+      </md-tab>
+    </md-tab-group>
+  </div>
+</div>

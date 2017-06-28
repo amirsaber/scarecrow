@@ -2,15 +2,13 @@
   "rules": {
     "Orders": {
       ".read": "true",
-      "Buy": {
-        "$orderId": {
-          ".write": "true"
-        }
-      },
-      "Sell": {
-        "$orderId": {
-          ".write": "true"
-        }
+      ".indexOn": [
+        "uid",
+        "grain",
+        "type"
+      ],
+      "$orderId": {
+        ".write": "!data.exists() || data.child('uid').val() === auth.uid"
       }
     }
   }
