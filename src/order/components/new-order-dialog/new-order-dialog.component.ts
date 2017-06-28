@@ -84,7 +84,7 @@ export class NewOrderDialogComponent implements OnInit {
       const list = this.db.list('/Orders')
       list.push({
         uid: this.afAuth.auth.currentUser.uid,
-        amount: data.amount,
+        amount: Number.parseInt(data.amount, 10),
         grain: data.grain,
         type: data.type,
         email: this.afAuth.auth.currentUser.email
@@ -106,7 +106,7 @@ export class NewOrderDialogComponent implements OnInit {
       const order = this.db.object(`/Orders/${this.order.$key}`)
       order.update({
         uid: this.afAuth.auth.currentUser.uid,
-        amount: data.amount,
+        amount: Number.parseInt(data.amount, 10),
         grain: data.grain,
         type: data.type,
         email: this.afAuth.auth.currentUser.email
