@@ -16,7 +16,7 @@
           ".validate": "newData.val() === auth.uid"
         },
         "email": {
-          ".validate": "newData..val() === auth.token.email"
+          ".validate": "newData.val() === auth.token.email"
         },
         "grain": {
           ".validate": "newData.isString()"
