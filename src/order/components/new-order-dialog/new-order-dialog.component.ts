@@ -32,7 +32,9 @@ export class NewOrderDialogComponent implements OnInit {
       'required': 'Type is required.',
     },
     amount: {
-      'required': 'Amount is required.'
+      'required': 'Amount is required.',
+      'pattern': 'Amount should be a number.',
+      'min': 'Amount should be more than zero.'
     },
     grain: {
       'required': 'Grain is required.'
@@ -50,7 +52,7 @@ export class NewOrderDialogComponent implements OnInit {
   public ngOnInit() {
     this.orderForm = this.formBuilder.group({
       type: [this.order.type],
-      amount: [this.order.amount, Validators.required],
+      amount: [this.order.amount, [Validators.required, Validators.pattern(/^\d+$/), Validators.min(1)]],
       grain: [this.order.grain, Validators.required]
     });
 
