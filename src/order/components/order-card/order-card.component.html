@@ -2,10 +2,10 @@
   <md-card>
     <md-card-header>{{order.grain}}</md-card-header>
     <md-card-content>Amount: {{order.amount}}</md-card-content>
-    <md-card-actions *ngIf="order.uid === afAuth.auth.currentUser.uid">
+    <md-card-actions *ngIf="afAuth.auth.currentUser && order.uid === afAuth.auth.currentUser.uid">
       <button md-button (click)="openNewOrder()">Edit</button>
     </md-card-actions>
-    <md-card-actions *ngIf="order.uid !== afAuth.auth.currentUser.uid">
+    <md-card-actions *ngIf="!afAuth.auth.currentUser || order.uid !== afAuth.auth.currentUser.uid">
       <button md-button (click)="openNewOrder()">View</button>
     </md-card-actions>
   </md-card>

@@ -32,7 +32,10 @@
 </md-dialog-content>
 <md-dialog-actions>
   <button md-button md-dialog-close>Close</button>
-  <button *ngIf="!order.$key" md-raised-button [disabled]='orderForm.invalid' color="primary" (click)="createOrder()">Add</button>
-  <button *ngIf="order.$key && order.uid === afAuth.auth.currentUser.uid" md-raised-button color="warn" (click)="deleteOrder()">Delete</button>
-  <button *ngIf="order.$key && order.uid === afAuth.auth.currentUser.uid" md-raised-button [disabled]='orderForm.invalid' color="primary" (click)="saveOrder()">Save</button>
+  <div class="action-button-container" *ngIf="afAuth.auth.currentUser">
+    <button *ngIf="!order.$key" md-raised-button [disabled]='orderForm.invalid' color="primary" (click)="createOrder()">Add</button>
+    <button *ngIf="order.$key && order.uid === afAuth.auth.currentUser.uid" md-raised-button color="warn" (click)="deleteOrder()">Delete</button>
+    <button *ngIf="order.$key && order.uid === afAuth.auth.currentUser.uid" md-raised-button [disabled]='orderForm.invalid' color="primary"
+      (click)="saveOrder()">Save</button>
+  </div>
 </md-dialog-actions>
