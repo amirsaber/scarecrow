@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuth } from 'angularfire2/auth';
 
 import { NewOrderDialogComponent } from '../new-order-dialog/new-order-dialog.component';
+import { ViewOrderDialogComponent } from '../view-order-dialog/view-order-dialog.component';
 
 @Component({
   selector: 'app-order-card',
@@ -22,6 +23,11 @@ export class OrderCardComponent {
 
   openNewOrder() {
     const dialogRef = this.dialog.open(NewOrderDialogComponent);
+    dialogRef.componentInstance.order = this.order;
+  }
+
+  openViewOrder() {
+    const dialogRef = this.dialog.open(ViewOrderDialogComponent);
     dialogRef.componentInstance.order = this.order;
   }
 }

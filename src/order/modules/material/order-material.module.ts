@@ -8,7 +8,8 @@ import {
   MdSnackBarModule,
   MdCardModule,
   MdSelectModule,
-  MdTabsModule
+  MdTabsModule,
+  MdIconModule
 } from '@angular/material';
 
 @NgModule({
@@ -24,7 +25,8 @@ import {
     MdSnackBarModule,
     MdCardModule,
     MdSelectModule,
-    MdTabsModule
+    MdTabsModule,
+    MdIconModule
   ]
 })
 export class OrderMaterialModule { }
