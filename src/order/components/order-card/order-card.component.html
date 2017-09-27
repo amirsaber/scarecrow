@@ -6,7 +6,7 @@
       <button md-button (click)="openNewOrder()">Edit</button>
     </md-card-actions>
     <md-card-actions *ngIf="!afAuth.auth.currentUser || order.uid !== afAuth.auth.currentUser.uid">
-      <button md-button (click)="openNewOrder()">View</button>
+      <button md-button (click)="openViewOrder()">View</button>
     </md-card-actions>
   </md-card>
 </div>

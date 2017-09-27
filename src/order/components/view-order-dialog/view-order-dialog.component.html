@@ -1,0 +1,22 @@
+<div md-dialog-title>
+  View Order
+</div>
+<md-dialog-content>
+  <div>
+    <div fxLayout="row" fxLayoutWrap>
+      <div fxFlex="100%">
+        <md-icon>more</md-icon>{{order.type}}
+      </div>
+      <div fxFlex="100%"><br/></div>
+      <div fxFlex="100%">
+        <md-icon>nature</md-icon>{{order.grain}}
+      </div>
+      <div fxFlex="100%">
+        <md-icon>shopping_cart</md-icon>{{order.amount}}
+      </div>
+    </div>
+  </div>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button md-dialog-close>Close</button>
+</md-dialog-actions>

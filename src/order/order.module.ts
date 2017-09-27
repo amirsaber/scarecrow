@@ -15,6 +15,7 @@ import { OrderRoutingModule } from './modules/routing/order-routing.module';
 import { UserOrdersComponent } from './components/user-orders/user-orders.component';
 import { NewOrderCardComponent } from './components/new-order-card/new-order-card.component';
 import { NewOrderDialogComponent } from './components/new-order-dialog/new-order-dialog.component';
+import { ViewOrderDialogComponent } from './components/view-order-dialog/view-order-dialog.component';
 import { OrderListComponent } from './components/order-list/order-list.component';
 import { OrderCardComponent } from './components/order-card/order-card.component';
 
@@ -23,6 +24,7 @@ import { OrderCardComponent } from './components/order-card/order-card.component
     UserOrdersComponent,
     NewOrderCardComponent,
     NewOrderDialogComponent,
+    ViewOrderDialogComponent,
     OrderListComponent,
     OrderCardComponent
   ],
@@ -38,7 +40,8 @@ import { OrderCardComponent } from './components/order-card/order-card.component
     OrderRoutingModule
   ],
   entryComponents: [
-    NewOrderDialogComponent
+    NewOrderDialogComponent,
+    ViewOrderDialogComponent
   ],
   providers: [],
 })
